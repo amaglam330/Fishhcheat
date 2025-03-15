@@ -48,7 +48,7 @@ FOVCircle.Color = Color3.new(255,255,255)
 FOVCircle.Thickness = 1
 FOVCircle.Filled = false
 
---RepStorage.VIPSettings.NoTeamLimits.Value = true
+RepStorage.VIPSettings.NoTeamLimits.Value = true
 --RepStorage.VIPSettings.EnabledSpectator.Value = true
 RepStorage.VIPSettings.NoVoiceCooldown.Value = true
 
@@ -252,18 +252,15 @@ local repo = "https://raw.githubusercontent.com/deividcomsono/Obsidian/main/"
 local Library = loadstring(game:HttpGet(repo .. "Library.lua"))()
 local ThemeManager = loadstring(game:HttpGet(repo .. "addons/ThemeManager.lua"))()
 local SaveManager = loadstring(game:HttpGet(repo .. "addons/SaveManager.lua"))()
-
-local Options = Library.Options
-local Toggles = Library.Toggles
+local Options = getgenv().Library.Options
+local Toggles = getgenv().Library.Toggles
 
 Library.ForceCheckbox = false -- Forces AddToggle to AddCheckbox
 Library.ShowToggleFrameInKeybinds = true -- Make toggle keybinds work inside the keybinds UI (aka adds a toggle to the UI). Good for mobile users (Default value = true)
 
-
 local Window = Library:CreateWindow({
-	Title = 'Amalgam',
-	Footer = "version: example",
-	Icon = 95816097006870,
+	Title = 'Amaglam',
+	Footer = "AMAGLAM V1" 
 	Center = true,
 	AutoShow = true,
 	Resizable = true,
@@ -283,7 +280,7 @@ local Tabs = {
 }
 
 local GB_Aimbot = Tabs.Aim:AddLeftGroupbox('Aimbot')
-GB_Aimbot:AddToggle('AimbotToggle', { Text = 'Aimbot', Default = true, Tooltip = 'Aims at enemies'}):AddKeyPicker('AimbotBind', { Default = 'Delete', NoUI = true, Mode = 'Hold', Text = 'Aimkey' })
+GB_Aimbot:AddToggle('AimbotToggle', { Text = 'Aimbot', Default = true, Tooltip = 'Aims at enemies'}):AddKeyPicker('AimbotBind', { Default = 'Delete', NoUI = false, Mode = 'Hold', Text = 'Aimkey' })
 GB_Aimbot:AddToggle('ProjAimbotToggle', { Text = 'Projectile Aimbot (BETA)', Default = true, Tooltip = '*Attempts* to predict player movement for projectile weapons\nUse hitbox expander for grenade launchers.'})
 GB_Aimbot:AddToggle('Wallcheck', { Text = 'Wallcheck', Default = false, Tooltip = 'Raycasts dont work properly on Solara, toggled off by default.'})
 GB_Aimbot:AddDropdown("TargetPart", {Values = {'Head', 'UpperTorso', 'HumanoidRootPart'}, Default = 3, Multi = false, Text = "Aimbot Part"})
@@ -292,7 +289,7 @@ GB_Aimbot:AddDivider()
 GB_Aimbot:AddToggle('AimbotOnlyFOVVis', { Text = 'FOV Check', Default = false, Tooltip = 'Only aims at enemies within FOV'})
 GB_Aimbot:AddSlider('AimbotFOV', {Text = 'FOV', Default = 60, Min = 1, Max = 90, Rounding = 2, Compact = true})
 GB_Aimbot:AddToggle('AimbotShowFOV', { Text = 'Show FOV Circle', Default = false, Tooltip = 'Draw FOV Circle on screen'})
-GB_Aimbot:AddLabel('Amalgam tc2 was made by Mad Weed Mechanic and special thanks to VineasLeo', true)
+GB_Aimbot:AddLabel('Amaglam tc2 was made by mad mechanic', true)
 --GB_Aimbot:AddDivider() -- FINISH THIS!
 --GB_Aimbot:AddToggle('AimbotLegitMelee', { Text = 'Legit Melee', Default = true, Tooltip = 'Enable distance check for melee'})
 
@@ -334,9 +331,8 @@ GB_ESP:AddSlider('ViewTracerDistance', {Text = 'View Tracer Distance', Default =
 GB_ESP:AddSlider('TextSize', {Text = 'Text Size', Default = 13, Min = 0, Max = 50, Rounding = 0, Suffix = '', Compact = false})
 GB_ESP:AddSlider('TextFont', {Text = 'Text Font', Default = 1, Min = 0, Max = 3, Rounding = 0, Suffix = '', Compact = false})
 GB_View:AddToggle('customfov', { Text = 'FOV Modifications', Default = true, Tooltip = 'Toggles FOV Modifications'})
-GB_View:AddSlider('customfovamount', { Text = '', Default = 90, Min = 0, Max = 190, Rounding = 0, Suffix = '°/190°', Compact = true})
-GB_World:AddToggle('ColorCorrectionToggle', { Text = 'Color Correction', Default = false, Tooltip = 'Overlay color on screen'}):AddColorPicker('ColorCorrection', {Default = Color3.fromRGB(153, 90, 198), Title = 'Color'})
-GB_World:AddToggle('NightMode', { Text = 'Night Mode', Default = false, Tooltip = 'Night mode!'})
+GB_View:AddSlider('customfovamount', { Text = '', Default = 90, Min = 0, Max = 120, Rounding = 0, Suffix = 'Â°/120Â°', Compact = true})
+GB_World:AddToggle('NightMode', { Text = 'Night Mode', Default = true, Tooltip = 'Night mode!'})
 GB_World:AddDropdown("LightingTechnology", {Values = {'Voxel', 'ShadowMap', 'Legacy', 'Future', 'Compatibility'}, Default = 2, Multi = false, Text = "Lighting Technology"})
 GB_World:AddDivider()
 GB_World:AddToggle('ThirdPerson', { Text = 'Third Person', Default = true, Tooltip = 'Toggle on/off using F5 key'})
@@ -365,9 +361,9 @@ GB_PlayerMods:AddToggle('BHop', { Text = 'Auto Bunny Hop', Default = true, Toolt
 GB_PlayerMods:AddToggle('NoBHopCap', { Text = 'No Bunny Hop Cap', Default = false, Tooltip = 'Unlock speed cap while bunnyhopping'})
 GB_PlayerMods:AddToggle('NoSlowdown', { Text = 'No slowdown', Default = false, Tooltip = 'No slowdown when revving, scoping etc.'})
 GB_PlayerMods:AddDivider()
-GB_PlayerMods:AddToggle('SpeedMod', { Text = 'Speed modifier', Default = false, Tooltip = 'Modify player speed',}):AddKeyPicker('SMBind', { Default = 'CapLock', NoUI = false, Mode = 'Toggle', Text = 'Speedkey' })
+GB_PlayerMods:AddToggle('SpeedMod', { Text = 'Speed modifier', Default = false, Tooltip = 'Modify player speed'}):AddKeyPicker('SpeedBind', { Default = 'Caplock', NoUI = false, Mode = 'Toggle', Text = 'Speedkey' })
 GB_PlayerMods:AddSlider('SpeedAmount', {Text = 'Speed', Default = 500, Min = 100, Max = 2000, Rounding = 2, Compact = true})
-GB_PlayerMods:AddToggle('JumpMod', { Text = 'Jump modifier', Default = false, Tooltip = 'Modify player jump height'}):AddKeyPicker('JMBind', { Default = 'CapLock', NoUI = false, Mode = 'Toggle', Text = 'Jumpkey' })
+GB_PlayerMods:AddToggle('JumpMod', { Text = 'Jump modifier', Default = false, Tooltip = 'Modify player jump height'}):AddKeyPicker('JumpBind', { Default = 'Caplock', NoUI = false, Mode = 'Toggle', Text = 'Jumpkey' })
 GB_PlayerMods:AddSlider('JumpAmount', {Text = 'Power', Default = 100, Min = 50, Max = 200, Rounding = 2, Compact = true})
 
 Toggles.BHop:OnChanged(function()
@@ -385,7 +381,7 @@ GB_WeaponMods:AddToggle('AlwaysBackstab', { Text = 'Always Backstab', Default = 
 GB_WeaponMods:AddToggle('NoSpread', { Text = 'Reduced Spread', Default = false, Tooltip = 'Significantly reduced spread for most weapons'})
 GB_WeaponMods:AddToggle('InfAmmo', { Text = 'Infinite Ammo', Default = false, Tooltip = 'Infinite ammo on all weapons'})
 GB_WeaponMods:AddToggle('InfCloak', { Text = 'Infinite Cloak', Default = false, Tooltip = 'Infinite cloak for Agent'})
-GB_WeaponMods:AddToggle('InfCharge', { Text = 'Infinite Shield Charge', Default = false, Tooltip = 'Infinite charge for Annihilator shields', Default = true, Disabled = false, Visible = true, Risky = True})
+GB_WeaponMods:AddToggle('InfCharge', { Text = 'Infinite Shield Charge', Default = false, Tooltip = 'Infinite charge for Annihilator shields', Default = true, Disabled = false, Visibility = true, Risky = true}) -- Possibly detected
 
 Toggles.AlwaysBackstab:OnChanged(function() -- Always Backstab
     if Toggles.AlwaysBackstab.Value then
@@ -546,7 +542,7 @@ GB_Removals:AddToggle('NoSniperScope', {Text = 'No Rifle Scope', Default = false
 GB_Removals:AddToggle('NoSniperBeam', {Text = 'No Rifle Beam', Default = false, Tooltip = "Block the remote for the rifle's beam (serversided)"})
 GB_Removals:AddToggle('NoUndisguise', {Text = 'No Undisguising After Attack', Default = false, Tooltip = 'Block the remote for undisguising'})
 GB_Removals:AddToggle('NoSelfDamage', {Text = 'No Self Melee Damage', Default = false, Tooltip = 'No more self damage for certain melees'})
-GB_Removals:AddToggle('InstantRespawn', {Text = 'No Respawn Cooldown', Default = false, Tooltip = 'aka Instant Respawn', Default = true, Disabled = false, Visible = true, Risky = True}) -- Detected probably?
+--GB_Removals:AddToggle('InstantRespawn', {Text = 'No Respawn Cooldown', Default = false, Tooltip = 'aka Instant Respawn'}) -- Detected probably?
 
 Toggles.NoSniperScope:OnChanged(function()
 	if Toggles.NoSniperScope.Value then
@@ -653,9 +649,9 @@ LegacyLocalVariables.died:GetPropertyChangedSignal('Value'):Connect(function()
 		if Toggles.OneLife.Value then
 			game:GetService("TeleportService"):Teleport(16167003515, LocalPlayer) -- lmao
 		end
-		if Toggles.InstantRespawn.Value then -- Instant Respawn
-			RepStorage.Events.LoadCharacter:FireServer()
-		end
+		--if Toggles.InstantRespawn.Value then -- Instant Respawn
+			--RepStorage.Events.LoadCharacter:FireServer()
+		--end
 		if Toggles.Deathsay.Value then -- Deathsay
 			RepStorage.Events.ChatMessage:FireServer(Deathsay[math.random(1, #Deathsay)], false)
 		end
@@ -707,13 +703,11 @@ task.spawn(function()
 	end
 end)
 
-
-
 -- UI Settings
 local MenuGroup = Tabs['UI Settings']:AddLeftGroupbox('Menu')
 
 MenuGroup:AddButton('Unload', function() Library:Unload() end)
-MenuGroup:AddLabel('Menu bind'):AddKeyPicker('MenuKeybind', { Default = 'RightShift', NoUI = false, Mode = 'Toggle' Text = 'Menu keybind' })
+MenuGroup:AddLabel('Menu bind'):AddKeyPicker('MenuKeybind', { Default = 'RightShift', NoUI = true, Text = 'Menu keybind' })
 MenuGroup:AddToggle("ShowKeybinds", {
 	Text = "Show Keybinds Menu",
 	Default = true, 
@@ -733,8 +727,8 @@ SaveManager:IgnoreThemeSettings()
 
 SaveManager:SetIgnoreIndexes({ 'MenuKeybind' })
 
-ThemeManager:SetFolder('Amalgam_v1')
-SaveManager:SetFolder('Amalgam_v1/Solara/TC2')
+ThemeManager:SetFolder('Amaglam_v1')
+SaveManager:SetFolder('Amaglam_v1/Solara/TC2')
 
 SaveManager:BuildConfigSection(Tabs['UI Settings'])
 
