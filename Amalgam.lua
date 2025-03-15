@@ -262,8 +262,7 @@ Library.ShowToggleFrameInKeybinds = true -- Make toggle keybinds work inside the
 
 local Window = Library:CreateWindow({
 	Title = 'Amalgam',
-	Footer = "version: v1",
-	Icon = 0,
+	Footer = "version: v1"
 	Center = true,
 	AutoShow = true,
 	Resizable = true,
