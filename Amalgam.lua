@@ -48,7 +48,7 @@ FOVCircle.Color = Color3.new(255,255,255)
 FOVCircle.Thickness = 1
 FOVCircle.Filled = false
 
-RepStorage.VIPSettings.NoTeamLimits.Value = true
+--RepStorage.VIPSettings.NoTeamLimits.Value = true
 --RepStorage.VIPSettings.EnabledSpectator.Value = true
 RepStorage.VIPSettings.NoVoiceCooldown.Value = true
 
@@ -262,7 +262,8 @@ Library.ShowToggleFrameInKeybinds = true -- Make toggle keybinds work inside the
 
 local Window = Library:CreateWindow({
 	Title = 'Amalgam',
-	Footer = "version: v1"
+	Footer = "version: example",
+	Icon = 95816097006870,
 	Center = true,
 	AutoShow = true,
 	Resizable = true,
