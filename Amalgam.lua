@@ -265,9 +265,7 @@ local Window = Library:CreateWindow({
 	AutoShow = true,
 	Resizable = true,
 	ShowCustomCursor = true,
-	NotifySide = "Left",
-	TabPadding = 8,
-	MenuFadeTime = 0.2
+	NotifySide = "Right",
 })
 
 local Tabs = {
