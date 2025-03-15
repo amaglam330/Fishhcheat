@@ -381,7 +381,7 @@ GB_WeaponMods:AddToggle('AlwaysBackstab', { Text = 'Always Backstab', Default = 
 GB_WeaponMods:AddToggle('NoSpread', { Text = 'Reduced Spread', Default = false, Tooltip = 'Significantly reduced spread for most weapons'})
 GB_WeaponMods:AddToggle('InfAmmo', { Text = 'Infinite Ammo', Default = false, Tooltip = 'Infinite ammo on all weapons'})
 GB_WeaponMods:AddToggle('InfCloak', { Text = 'Infinite Cloak', Default = false, Tooltip = 'Infinite cloak for Agent'})
-GB_WeaponMods:AddToggle('InfCharge', { Text = 'Infinite Shield Charge', Default = false, Tooltip = 'Infinite charge for Annihilator shields', Default = true, Disabled = false, Visibility = true, Risky = true}) -- Possibly detected
+GB_WeaponMods:AddToggle('InfCharge', { Text = 'Infinite Shield Charge', Default = false, Tooltip = 'Infinite charge for Annihilator shields', Default = true, Disabled = false, Visible = true, Risky = true}) -- Possibly detected
 
 Toggles.AlwaysBackstab:OnChanged(function() -- Always Backstab
     if Toggles.AlwaysBackstab.Value then
