@@ -258,14 +258,11 @@ local Toggles = getgenv().Library.Toggles
 Library.ForceCheckbox = false -- Forces AddToggle to AddCheckbox
 Library.ShowToggleFrameInKeybinds = true -- Make toggle keybinds work inside the keybinds UI (aka adds a toggle to the UI). Good for mobile users (Default value = true)
 
-local Window = Library:CreateWindow({
-	Title = 'Amaglam',
-	Footer = "AMAGLAM V1" 
-	Center = true,
-	AutoShow = true,
-	Resizable = true,
-	ShowCustomCursor = true,
+Title = "AMALGAM",
+	Footer = "AMALGAM V1",
+	Icon = 95816097006870,
 	NotifySide = "Right",
+	ShowCustomCursor = true,
 })
 
 local Tabs = {
